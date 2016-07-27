@@ -361,11 +361,11 @@ function next(args) {
         guessStates = [1,1,1,1,0,0];
         break;
       case 11200:
-        order = [4,3,1,2,5,0];
+        order = [5,3,0,2,4,1];
         guessStates = [1,1,1,1,0,0];
         break;
       case 11210:
-        order = [5,3,0,2,4,1];
+        order = [4,3,1,2,5,0];
         guessStates = [1,1,1,1,0,0];
         break;
       case 11220:
