@@ -1,3 +1,6 @@
+// @author dfmcfhf (dfmchfhf@gmail.com)
+// @description a tool to solve the potionology event on DFOg
+
 var div;
 var step;
 var hist;
@@ -44,12 +47,12 @@ if (!Array.prototype.equals) {
     for (var i = 0, l = this.length; i < l; i++) {
       if (this[i] instanceof Array && array[i] instanceof Array) {
         if (!this[i].equals(array[i]))
-          return false;       
-      }           
-      else if (this[i] != array[i]) { 
-        return false;   
-      }           
-    }       
+          return false;
+      }
+      else if (this[i] != array[i]) {
+        return false;
+      }
+    }
     return true;
   }
   Object.defineProperty(Array.prototype, "equals", {enumerable: false});
@@ -112,23 +115,23 @@ function getGuess(normIds, ord, guessStates) {
   guessDiv.id = "guess";
   guessDiv.appendChild(getImg.apply(this, elements[0]));
   guessDiv.appendChild(document.createTextNode(" : "));
-  guessDiv.appendChild(getSingleGuess(ord[0], guessStates[0], 0));
+  guessDiv.appendChild(getSingleGuess(normIds[ord[0]], guessStates[0], 0));
   guessDiv.appendChild(document.createTextNode(" , "));
-  guessDiv.appendChild(getSingleGuess(ord[1], guessStates[1], 1));
+  guessDiv.appendChild(getSingleGuess(normIds[ord[1]], guessStates[1], 1));
   guessDiv.appendChild(document.createElement("br"));
   guessDiv.appendChild(getImg.apply(this, elements[1]));
   guessDiv.appendChild(document.createTextNode(" : "));
-  guessDiv.appendChild(getSingleGuess(ord[2], guessStates[2], 2));
+  guessDiv.appendChild(getSingleGuess(normIds[ord[2]], guessStates[2], 2));
   guessDiv.appendChild(document.createTextNode(" , "));
-  guessDiv.appendChild(getSingleGuess(ord[3], guessStates[3], 3));
+  guessDiv.appendChild(getSingleGuess(normIds[ord[3]], guessStates[3], 3));
   guessDiv.appendChild(document.createElement("br"));
   guessDiv.appendChild(getImg.apply(this, elements[2]));
   guessDiv.appendChild(document.createTextNode(" : "));
-  guessDiv.appendChild(getSingleGuess(ord[4], guessStates[4], 4));
+  guessDiv.appendChild(getSingleGuess(normIds[ord[4]], guessStates[4], 4));
   guessDiv.appendChild(document.createElement("br"));
   guessDiv.appendChild(getImg.apply(this, elements[3]));
   guessDiv.appendChild(document.createTextNode(" : "));
-  guessDiv.appendChild(getSingleGuess(ord[5], guessStates[5], 5));
+  guessDiv.appendChild(getSingleGuess(normIds[ord[5]], guessStates[5], 5));
 
   if (guessStates.some(function(x) { return x; })) {
     guessDiv.appendChild(document.createElement("br"));
@@ -158,7 +161,7 @@ function getGuessStatus() {
 }
 
 function sadness() {
-  div.appendChild(document.createTextNode("something went wrong, you shouldn't get here :("));
+  div.appendChild(document.createTextNode("something went wrong, you shouldn't get here :o("));
 }
 
 function next(args) {
@@ -240,7 +243,7 @@ function next(args) {
         div.appendChild(document.createTextNode("this should be the solution:"));
       }
     } else if (step % 10 == 0) {
-      div.appendChild(document.createTextNode("we can now make a guess:"));
+      div.appendChild(document.createTextNode("we can now make a guess (check ingredients which are correct):"));
     }
     div.appendChild(document.createElement("br"));
 
@@ -340,7 +343,7 @@ function next(args) {
       case 13300:
         sadness();
         return;
-  
+
       case 10200:
         order = [1,2,4,3,0,5];
         guessStates = [1,1,1,1,0,0];
