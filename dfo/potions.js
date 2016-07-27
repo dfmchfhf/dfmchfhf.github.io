@@ -505,7 +505,7 @@ function next(args) {
         guessStates = true;
         break;
       case 10121:
-        if (guessStatus[1] && !guessStates.equals([0,1,0,1,1,1]) || guessStatus[0] != guessStatus[2] || (guessStatus[3] && guessStatus[5]) || (!guessStatus[4] && (guessStatus[3] || (guessStatus[5] && !guessStatus[0])))) {
+        if (guessStatus[1] && !guessStatus.equals([0,1,0,1,1,1]) || guessStatus[0] != guessStatus[2] || (guessStatus[3] && guessStatus[5]) || (!guessStatus[4] && (guessStatus[3] || (guessStatus[5] && !guessStatus[0])))) {
           sadness();
           return;
         }
