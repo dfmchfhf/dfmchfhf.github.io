@@ -505,7 +505,7 @@ function next(args) {
         guessStates = true;
         break;
       case 10121:
-        if (guessStatus[1] && !guessStatus.equals([0,1,0,1,1,1]) || guessStatus[0] != guessStatus[2] || (guessStatus[3] && guessStatus[5]) || (!guessStatus[4] && (guessStatus[3] || (guessStatus[5] && !guessStatus[0])))) {
+        if (!guessStatus.equals([0,1,0,1,1,1]) && (guessStatus[1] || guessStatus[0] != guessStatus[2] || (guessStatus[3] && guessStatus[5]) || (!guessStatus[4] && (guessStatus[3] || (guessStatus[5] && !guessStatus[0]))))) {
           sadness();
           return;
         }
@@ -513,13 +513,13 @@ function next(args) {
           [order[0],order[2]] = [order[2],order[0]];
         }
         if (!guessStatus[4]) {
-          [order[1],order[4]] = [order[4],order[1]];
-        }
-        if (!guessStatus[3]) {
-          [order[1],order[3]] = [order[3],order[1]];
+          [order[3],order[4]] = [order[4],order[3]];
         }
         if (!guessStatus[5]) {
           [order[1],order[5]] = [order[5],order[1]];
+        }
+        if (!guessStatus[3]) {
+          [order[1],order[3]] = [order[3],order[1]];
         }
         break;
       case 10130:
