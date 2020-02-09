@@ -141,8 +141,8 @@ class PageLoader {
     xhr.onreadystatechange = () => {
       if ((xhr.status == 200 || xhr.status == 0) && xhr.readyState == 4) {
         try {
-          const res = JSON.parse(xhr.responseText);
-          const doc = new DOMParser().parseFromString(res['contents'], 'text/html');
+          const res = xhr.responseText;
+          const doc = new DOMParser().parseFromString(res, 'text/html');
           const gridTable = doc.getElementById('left_column').getElementsByTagName('table')[0];
           this.letters = Array.from(gridTable.getElementsByTagName('img')).map(img => img.src.slice(-5)[0]);
         } catch (e) {
@@ -151,7 +151,8 @@ class PageLoader {
         this.loadClues();
       }
     };
-    xhr.open('GET', 'http://www.whateverorigin.org/get?url=' + encodeURIComponent('http://www.playbabble.com'));
+    xhr.open('GET', 'https://cors-anywhere.herokuapp.com/http://www.playbabble.com');
+    xhr.setRequestHeader('X-Requested-With','XMLHttpRequest')
     xhr.send();
   }
   loadClues() {
