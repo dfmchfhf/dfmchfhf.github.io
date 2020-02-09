@@ -135,6 +135,9 @@ input.gridletter {
 .bulkops > * {
   display:      block;
 }
+.bulkops > a {
+  color:        #a8a8ff;
+}
 .bulkops > textarea {
   height:       12ex;
   width:        18em;

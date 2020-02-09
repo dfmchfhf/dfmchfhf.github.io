@@ -358,7 +358,7 @@ class PageLoader {
     gridFooter.classList.add('gridfootnote');
     gridFooter.appendChild(document.createTextNode('Right-click a tile to edit.  "Q" works for the "Qu" tile.'));
     const bulkOpsWrapper = document.createElement('div');
-    bulkOpsWrapper.classList.add('bulkops', 'hidden');
+    bulkOpsWrapper.classList.add('bulkops');
     const bulkOpsLink = document.createElement('a');
     bulkOpsLink.href = '#';
     bulkOpsLink.innerText = 'Hide/Show bulk operations';
