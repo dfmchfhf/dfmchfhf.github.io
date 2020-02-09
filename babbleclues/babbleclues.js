@@ -293,6 +293,7 @@ class PageLoader {
     clueAddPane.appendChild(clueFilterWrapper);
     clueAddPane.appendChild(clueStatsWrapper);
     const cluePane = document.createElement('div');
+    cluePane.style.height = "100%";
     cluePane.appendChild(clueAddPane);
     cluePane.appendChild(clueList);
     document.getElementById('cluepane').children[0].replaceWith(cluePane);
