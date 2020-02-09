@@ -1,0 +1,144 @@
+body {
+  background:   #131411;
+  color:        #daded6;
+}
+
+.maincontainer {
+  height:       100%;
+  position:     relative;
+  width:        768px;
+  min-height:   600px;
+  margin:       auto;
+}
+
+.titlepane {
+  height:       10%;
+  width:        100%;
+  position:     relative;
+}
+.titlepane > span {
+  width:        100%;
+  position:     absolute;
+  bottom:       0;
+  text-align:   center;
+  font-size:    300%;
+}
+
+.cluepane {
+  display:      inline-block;
+  height:       85%;
+  width:        40%;
+  box-sizing:   border-box;
+  overflow:     hidden;
+}
+
+.gridpane {
+  display:      inline-block;
+  height:       85%;
+  width:        60%;
+  right:        0;
+  position:     absolute;
+  padding:      2em;
+  box-sizing:   border-box;
+  overflow-x:   hidden;
+  overflow-y:   auto;
+}
+
+.footerpane {
+  height:       5%;
+}
+
+.clueaddpane {
+  height:       10ex;
+}
+
+.addwordbox {
+  width:        10em;
+}
+
+.cluefilters {
+  margin-top:   0.5ex;
+}
+
+.wordsfound {
+  font-size:    80%;
+  margin-top:   0.5ex;
+}
+
+.cluelist {
+  height:       calc(100% - 10ex);
+  overflow-y:   scroll;
+}
+
+.clue {
+  margin:       1px;
+}
+.clue > label {
+  display:      inline-block;
+  width:        4em;
+}
+.clue > input {
+  width:        7em;
+}
+
+.minisep {
+  height:       1ex;
+}
+.majsep {
+  height:       4ex;
+}
+
+.cluelist.filtered .minisep {
+  display:      none;
+}
+.cluelist.filtered .majsep {
+  display:      none;
+}
+
+.clue.correct > input {
+  border-color: #33aa00;
+  background-color: #aaff55;
+}
+.clue.wrong > input {
+  border-color: #ee4422;
+  background-color: #ffccaa;
+}
+
+.cluelist.filtered.filtered-on > .clue:not(.correct) {
+  display:      none;
+}
+.cluelist.filtered.filtered-off > .clue.correct {
+  display:      none;
+}
+
+.grid {
+  background:   #99cc33;
+  padding:      10px;
+}
+
+.gridletter {
+  width:        50px;
+}
+input.gridletter {
+  text-align:   center;
+  font-size:    32px;
+  font-face:    Arial;
+}
+
+.gridfootnote {
+  font-size:    80%;
+}
+
+.bulkops {
+  margin-top:   4ex;
+}
+.bulkops > * {
+  display:      block;
+}
+.bulkops > textarea {
+  height:       12ex;
+  width:        18em;
+}
+.bulkops.hidden > :not(a) {
+  display:      none;
+}
