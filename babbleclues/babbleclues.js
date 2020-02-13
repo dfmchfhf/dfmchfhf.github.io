@@ -167,6 +167,7 @@ class PageLoader {
     const correctCountSpan = document.createElement('span');
     clueList.classList.add('cluelist');
     let prev = null;
+    let cnt = 0;
     for (const word of foundWords) {
       const cur = word.slice(0, 2);
       prev = prev || cur;
@@ -185,7 +186,7 @@ class PageLoader {
       clueLabel.appendChild(document.createTextNode(clue));
       clueWrapper.appendChild(clueLabel);
       const clueBox = document.createElement('input');
-      clueBox.id = clueLabel.htmlFor = 'clue' + hsh;
+      clueBox.id = clueLabel.htmlFor = 'clue' + cnt++;
       clueBox.placeholder = cur;
       clueBox.addEventListener('change', e => {
         if (!clueBox.value) {
@@ -201,7 +202,10 @@ class PageLoader {
       });
       clueWrapper.appendChild(clueBox);
       clueList.appendChild(clueWrapper);
-      cbs[hsh] = clueBox;
+      if (!(hsh in cbs)) {
+        cbs[hsh] = {}
+      }
+      cbs[hsh][clue] = clueBox;
     }
     const clueAddPane = document.createElement('div');
     clueAddPane.classList.add('clueaddpane');
@@ -216,13 +220,15 @@ class PageLoader {
         return;
       }
       const word_hsh = HASH(word);
-      if (!(word_hsh in cbs) || !word.startsWith(cbs[word_hsh].placeholder)) {
+      const clue = word.slice(0, 2) + word.length + ',' + scoreBabbleRaw(word) * (word.length - 3);
+      if (!(word_hsh in cbs) || !(clue in cbs[word_hsh])) {
         return;
       }
-      cbs[word_hsh].value = word;
-      cbs[word_hsh].parentNode.classList.remove('wrong');
-      cbs[word_hsh].parentNode.classList.add('correct');
-      scroll && cbs[word_hsh].scrollIntoView({block: 'nearest'});
+      const tarClueBox = cbs[word_hsh][clue];
+      tarClueBox.value = word;
+      tarClueBox.parentNode.classList.remove('wrong');
+      tarClueBox.parentNode.classList.add('correct');
+      scroll && tarClueBox.scrollIntoView({block: 'nearest'});
       clueAddBox.value = '';
       correctCountSpan.innerText = document.getElementsByClassName('clue correct').length;
     }
