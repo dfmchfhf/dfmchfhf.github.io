@@ -393,7 +393,7 @@ class PageLoader {
     bulkGrabSubmit.type = 'submit';
     bulkGrabSubmit.value = 'Bulk Grab';
     bulkGrabSubmit.addEventListener('click', e => {
-      bulkOpsBox.value = Object.values(cbs).map(cb => cb.parentNode.classList.contains('correct') && cb.value).filter(s => s).join('\n');
+      bulkOpsBox.value = Object.values(cbs).map(l => Object.values(l)).flat().map(cb => cb.parentNode.classList.contains('correct') && cb.value).filter(s => s).join('\n');
     });
     const bulkOpsControls = document.createElement('div');
     bulkOpsControls.appendChild(bulkAddSubmit);
